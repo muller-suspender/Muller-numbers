@@ -7,18 +7,19 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background: #000;
-            color: #00f;
+            background: #ffffff;
+            color: #0000ff;
             text-align: center;
             padding: 50px;
         }
         .container {
-            background: rgba(0, 0, 20, 0.8);
+            background: rgba(255, 255, 255, 0.9);
             border-radius: 15px;
             padding: 30px;
             max-width: 400px;
             margin: 0 auto;
-            box-shadow: 0 0 20px #00f;
+            box-shadow: 0 0 20px rgba(0, 0, 255, 0.3);
+            border: 1px solid #0000ff;
         }
         h1 {
             animation: blink 2s infinite;
@@ -28,12 +29,12 @@
             width: 80%;
             margin: 10px auto;
             padding: 10px;
-            background: #111;
-            color: #0ff;
-            border: 1px solid #00f;
+            background: #f0f0f0;
+            color: #000000;
+            border: 1px solid #0000ff;
         }
         button {
-            background: #00f;
+            background: #0000ff;
             color: white;
             border: none;
             padding: 10px 20px;
@@ -49,6 +50,12 @@
             display: none;
             color: red;
             animation: blink-red-purple 0.5s infinite;
+        }
+        #registrationComplete {
+            display: none;
+            color: #0000ff;
+            font-weight: bold;
+            margin-top: 15px;
         }
         @keyframes blink {
             0%, 100% { opacity: 1; }
@@ -69,8 +76,8 @@
             animation: blink-blue 3s infinite;
         }
         @keyframes blink-blue {
-            0%, 100% { opacity: 1; color: #00f; }
-            50% { opacity: 0.5; color: #55f; }
+            0%, 100% { opacity: 1; color: #0000ff; }
+            50% { opacity: 0.5; color: #5555ff; }
         }
     </style>
 </head>
@@ -84,6 +91,7 @@
             <input type="email" id="regEmail" placeholder="Email">
             <input type="password" id="regPassword" placeholder="Password">
             <button onclick="register()">Register</button>
+            <div id="registrationComplete">Registration complete! Log in now.</div>
         </div>
         <div id="loginForm">
             <p class="blink-blue">Login</p>
@@ -96,7 +104,7 @@
     </div>
 
     <script>
-        const SUSPENDER_MASTER_ID = "mullertech"; // Your Master ID
+        const SUSPENDER_MASTER_ID = "mullertech";
         let accounts = [];
 
         function register() {
@@ -109,8 +117,22 @@
                 alert("Invalid Suspender Master ID!");
                 return;
             }
+            
             accounts.push({ username, email, password });
-            alert("Registration complete! Now login.");
+            
+            // Clear all registration fields
+            document.getElementById("masterID").value = "";
+            document.getElementById("regUsername").value = "";
+            document.getElementById("regEmail").value = "";
+            document.getElementById("regPassword").value = "";
+            
+            // Show registration complete message
+            document.getElementById("registrationComplete").style.display = "block";
+            
+            // Hide the message after 3 seconds
+            setTimeout(() => {
+                document.getElementById("registrationComplete").style.display = "none";
+            }, 3000);
         }
 
         function login() {
@@ -125,8 +147,8 @@
                 successDiv.style.display = "block";
                 errorDiv.style.display = "none";
                 setTimeout(() => {
-                    window.location.href = "files.html"; // Redirect to files.html
-                }, 10000); // 10 seconds delay
+                    window.location.href = "files.html";
+                }, 10000);
             } else {
                 errorDiv.style.display = "block";
                 successDiv.style.display = "none";
@@ -134,4 +156,4 @@
         }
     </script>
 </body>
-  </html>
+                </html>
