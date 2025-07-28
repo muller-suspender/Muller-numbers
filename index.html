@@ -7,10 +7,12 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background: #000000; /* PURE BLACK BACKGROUND */
+            background: #000000;
             color: #00f;
             text-align: center;
             padding: 50px;
+            position: relative;
+            min-height: 100vh;
         }
         .container {
             background: rgba(0, 0, 0, 0.8);
@@ -57,6 +59,12 @@
             font-weight: bold;
             margin-top: 15px;
         }
+        .copyright {
+            margin-top: 40px;
+            color: #00f;
+            font-size: 14px;
+            opacity: 0.7;
+        }
         @keyframes blink {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.3; }
@@ -91,7 +99,7 @@
             <input type="email" id="regEmail" placeholder="Email">
             <input type="password" id="regPassword" placeholder="Password">
             <button onclick="register()">Register</button>
-            <div id="registrationComplete">Registration completed! Log in now.</div>
+            <div id="registrationComplete">Registration complete! Log in now.</div>
         </div>
         <div id="loginForm">
             <p class="blink-blue">Login</p>
@@ -100,7 +108,11 @@
             <button onclick="login()">Send</button>
         </div>
         <div id="success">Successfully logged in. Wait for a minute...</div>
-        <div id="error">Suspender denied: No account matches with this one.</div>
+        <div id="error">Suspender denial: No account matches with this one.</div>
+    </div>
+
+    <div class="copyright">
+        © Copyright 2025 | Created by Muller Tech❤️‍🔥
     </div>
 
     <script>
@@ -156,4 +168,4 @@
         }
     </script>
 </body>
-    </html>
+</html>
